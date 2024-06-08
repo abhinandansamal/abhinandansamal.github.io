@@ -14,3 +14,8 @@ Welcome to my data science portfolio! This repository showcases my skills, proje
 - [Certifications and Awards](#certifications-and-awards)
 
 Link to access the website: https://abhinandansamal.github.io
+
+Recommended browsers to access the page: `Google Chrome`, `Safari`, `Brave` 
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/abhinandansamal/abhinandansamal.github.io/blob/main/LICENSE) file for details.
