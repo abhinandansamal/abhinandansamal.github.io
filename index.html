@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhinandan Samal's Data Science Portfolio</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            padding-top: 56px;
+            background: linear-gradient(to right, #c9d6ff, #e2e2e2);
+        }
+
+        .navbar-brand {
+            font-weight: 500;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #007bff;
+        }
+
+        .section-heading {
+            margin-top: 50px;
+            margin-bottom: 30px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .section-heading:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .about-section:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-section img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 50%;
+            border: 3px solid #007bff;
+        }
+
+        .card img {
+            margin-bottom: 20px;
+        }
+
+        .project-image {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border-radius: 10px;
+        }
+
+        .highlight {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-card,
+        .cert-award-item,
+        .blog-item,
+        .contact-item {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .testimonial-card:hover,
+        .cert-award-item:hover,
+        .blog-item:hover,
+        .contact-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-card footer,
+        .cert-award-item a,
+        .contact-item a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .testimonial-card footer:hover,
+        .cert-award-item a:hover,
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Abhinandan Samal</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#blogs">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="about" class="container section-heading">
+        <h2>About Me</h2>
+        <div class="about-section">
+            <img src="images/IMG_3436.jpeg" alt="Abhinandan Samal" class="img-fluid">
+            <div class="about-text">
+                <p>Hardworking, dedicated, and self-motivated student, passionate about learning, exploring, and contributing to the fields of Data science and AI.</p>
+                <p>My journey started with a Bachelor of Technology in Mechanical Engineering. After graduating, I transitioned into IT, working as a Technical Support Executive at Tata Consultancy Services. My passion for data led me to become a Data Engineer, and eventually, I worked at IBM. In 2023, I moved to Berlin, Germany, to pursue a Master's degree in Data Science. I am hardworking, dedicated, self-motivated, and business-minded, consistently striving to deliver impactful data-driven solutions.</p>
+                <p>Apart from my studies, I have a strong interest in cricket. During my graduation, I represented my college in various cricket leagues, and later, I represented TCS in corporate cricket leagues.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="container section-heading">
+        <h2>Skills and Tools</h2>
+        <ul class="list-unstyled">
+            <li><i class="fas fa-check"></i> Programming Languages: Python, Java</li>
+            <li><i class="fas fa-check"></i> Libraries: NumPy, Pandas, Matplotlib, Seaborn, scikit-learn, TensorFlow, Keras, PyTorch, OpenCV</li>
+            <li><i class="fas fa-check"></i> Machine Learning: Supervised & Unsupervised Learning, Ensemble Methods, Time Series Modeling, Recommendation Engine, Deep Learning (ANN, CNN, RNN, GAN, Transformer)</li>
+            <li><i class="fas fa-check"></i> Natural Language Processing (NLP)</li>
+            <li><i class="fas fa-check"></i> Big Data: Hadoop, PySpark, Hive, Cassandra, Kafka</li>
+            <li><i class="fas fa-check"></i> Model Deployment: Docker, Kubernetes, AWS (EMR, EKS)</li>
+            <li><i class="fas fa-check"></i> Cloud: AWS EC2, S3, Sagemaker, Lambda</li>
+            <li><i class="fas fa-check"></i> SQL (MySQL, PostgreSQL), KSQL</li>
+            <li><i class="fas fa-check"></i> Statistics (Advance), Mathematics (Advance)</li>
+            <li><i class="fas fa-check"></i> Tableau, MS Excel (Advance), Jupyter Notebook, Visual Studio Code, Git</li>
+            <li><i class="fas fa-check"></i> Agile Methodology, DevOps (Continuous Integration and Continuous Delivery)</li>
+        </ul>
+    </section>
+
+    <section id="projects" class="container section-heading">
+        <h2>Projects</h2>
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">Abalone Age Prediction using Machine Learning</h3>
+                <p class="card-text"><strong>Description:</strong> Developed a machine learning pipeline to predict the age of abalone from various physical measurements using advanced data preprocessing, feature engineering, and model training techniques. The project was executed as a comprehensive end-to-end solution from data preparation to model deployment, leveraging Python and several key data science libraries.</p>
+                <div class="section-title">Key Features</div>
+                <p><span class="highlight">Data Preprocessing:</span> Cleaned and prepared the dataset consisting of 90,615 training samples and 60,411 test samples. This included handling missing values, outlier detection and removal, skewness correction, and data normalization.</p>
+                <p><span class="highlight">Exploratory Data Analysis (EDA):</span> Conducted thorough EDA to understand data distributions, relationships between variables, and to visualize key insights using matplotlib and seaborn libraries.</p>
+                <p><span class="highlight">Feature Engineering:</span> Created new features through transformations and interactions to enhance model performance. Applied one-hot encoding for categorical variables and standard scaling for numerical features.</p>
+                <p><span class="highlight">Model Development:</span> Implemented a Gradient Boosting Regressor as the primary model. Conducted hyperparameter tuning using GridSearchCV to identify the best parameters, improving model accuracy.</p>
+                <p><span class="highlight">Model Evaluation:</span> Evaluated model performance using Root Mean Squared Logarithmic Error (RMSLE) and R-squared metrics. Achieved a validation RMSLE of 0.1425 and a validation R<sup>2</sup> of 0.6783, indicating robust model performance.</p>
+                <p><span class="highlight">Logging and Exception Handling:</span> Integrated comprehensive logging and exception handling to ensure smooth execution and ease of debugging.</p>
+                <p><span class="highlight">Visualization:</span> Generated detailed visualizations, including histograms, pair plots, and correlation matrices to support data-driven decisions and model interpretations.</p>
+                <p><span class="highlight">Deployment:</span> Prepared the final model for deployment using joblib for model serialization and Docker for containerization, ensuring reproducibility and scalability.</p>
+                <div class="section-title">Technologies Used</div>
+                <p><span class="highlight">Programming Languages:</span> Python (NumPy, pandas, matplotlib, seaborn, scikit-learn, joblib)</p>
+                <p><span class="highlight">Data Processing:</span> Data cleaning, outlier detection, Winsorization, data normalization</p>
+                <p><span class="highlight">Machine Learning:</span> Gradient Boosting Regressor, hyperparameter tuning (GridSearchCV)</p>
+                <p><span class="highlight">Model Evaluation:</span> RMSLE, R-squared</p>
+                <p><span class="highlight">Tools and Frameworks:</span> Jupyter Notebook, Docker</p>
+                <p><span class="highlight">Software Development Practices:</span> Modular code structure, configuration management using YAML, logging, and exception handling</p>
+                <div class="section-title">Visuals</div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="images/boxplot_outlier_visualization.png" alt="Boxplot Outlier Visualization" class="project-image">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="images/correlation_matrix.png" alt="Correlation Matrix" class="project-image">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="images/histogram_qqplot_numerical_data_distribution.png" alt="Histogram and QQ Plot" class="project-image">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="images/Histograms_Numerical_Features.png" alt="Histograms of Numerical Features" class="project-image">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="images/pairplot_visualize_feature_relationships.png" alt="Pairplot Visualizing Feature Relationships" class="project-image">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="images/target_variable_distribution.png" alt="Target Variable Distribution" class="project-image">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="images/abalone_model_performance.png" alt="Model Evaluation Code and Metrics" class="project-image">
+                    </div>
+                </div>
+                <p class="card-text"><strong>Link to Code:</strong> <a href="https://github.com/abhinandansamal/abalone-age-prediction.git" target="_blank">GitHub Repository</a></p>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">Walmart Sales Forecasting using Machine Learning</h3>
+                <p class="card-text"><strong>Description:</strong> Developed a machine learning model to forecast the daily sales for the next 28 days at Walmart stores in three US states (California, Texas, and Wisconsin). The primary objective is to improve forecast accuracy using machine learning techniques, specifically targeting improvements in inventory management by reducing overstock and stockout scenarios.</p>
+                <div class="section-title">Key Features</div>
+                <p><span class="highlight">Data Preprocessing:</span> Preprocessed and analyzed 6M+ rows of data. This included merging datasets, handling missing values, and ensuring data consistency.</p>
+                <p><span class="highlight">Feature Engineering:</span> Extracted day, month, year, and holiday flags. Created lag features to capture past sales trends. Applied one-hot encoding to categorical features such as event names and types. Ensured both training and evaluation datasets had the same features.</p>
+                <p><span class="highlight">Model Development:</span> Implemented Prophet, an open-source forecasting tool by Facebook, designed for handling daily seasonality, holidays, and trend changes, as the model.</p>
+                <p><span class="highlight">Model Evaluation:</span> Evaluated model performance using Mean Absolute Error (MAE) and Root Mean Squared Scaled Error (RMSSE) metrics. Achieved a validation MAE of 2.44 and a validation RMSSE of 0.6054, indicating robust model performance.</p>
+                <p><span class="highlight">Business Impact:</span> Calculated the average selling price of the items as $3.66. Estimated the financial savings of $250.44 from improved forecasting accuracy.</p>
+                <p><span class="highlight">Logging and Exception Handling:</span> Integrated comprehensive logging and exception handling to ensure smooth execution and ease of debugging.</p>
+                <p><span class="highlight">Visualization:</span> Generated detailed visualizations, including distribution of sales for a specific item and forecast plot.</p>
+                <div class="section-title">Technologies Used</div>
+                <p><span class="highlight">Programming Languages:</span> Python (NumPy, pandas, matplotlib, seaborn, statsmodels, Prophet, joblib)</p>
+                <p><span class="highlight">Data Processing:</span> Data merging, date features extraction, lag features creation, one-hot encoding, alignment of training and evaluation datasets</p>
+                <p><span class="highlight">Machine Learning:</span> Prophet Model</p>
+                <p><span class="highlight">Model Evaluation:</span> Mean Absolute Error (MAE), Root Mean Squared Scaled Error (RMSSE)</p>
+                <p><span class="highlight">Tools and Frameworks:</span> Jupyter Notebook, Google Cloud, Google Colab</p>
+                <p><span class="highlight">Software Development Practices:</span> Modular code structure, configuration management using YAML, logging, and exception handling</p>
+                <div class="section-title">Visuals</div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="images/forecast_plot.png" alt="Forecast Plot" class="project-image">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="images/model_evaluation_business_impact_walmart.png" alt="Model Evaluation and Business Impact" class="project-image">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="images/Sales_Distribution_Walmart.png" alt="Sales Distribution" class="project-image">
+                    </div>
+                </div>
+                <p class="card-text"><strong>Link to Code:</strong> <a href="https://github.com/abhinandansamal/walmart-unit-sales-forecast.git" target="_blank">GitHub Repository</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="blogs" class="container section-heading">
+        <h2>Blog or Articles</h2>
+        <div class="blog-item">
+            <p><a href="https://medium.com/@abhinandan198/understanding-and-preventing-data-leakage-in-machine-learning-a-practical-guide-109c2cec4d3d" target="_blank"><i class="fas fa-external-link-alt"></i> Understanding and Preventing Data Leakage in Machine Learning: A Practical Guide</a></p>
+        </div>
+        <div class="blog-item">
+            <p><a href="https://medium.com/@abhinandan198/exploring-data-with-sweetviz-a-comprehensive-guide-4ccd7d59d957" target="_blank"><i class="fas fa-external-link-alt"></i> Exploring Data with Sweetviz: A Comprehensive Guide</a></p>
+        </div>
+        <div class="blog-item">
+            <p><a href="https://medium.com/@abhinandan198/building-ml-models-understanding-algorithm-assumptions-a5e5c462ce09" target="_blank"><i class="fas fa-external-link-alt"></i> Building ML Models: Understanding Algorithm Assumptions</a></p>
+        </div>
+    </section>
+
+    <section id="contact" class="container section-heading">
+        <h2>Contact Information</h2>
+        <div class="contact-item">
+            <p>Email Address: <a href="mailto:samalabhinandan06@gmail.com"><i class="fas fa-envelope"></i> samalabhinandan06@gmail.com</a></p>
+        </div>
+        <div class="contact-item">
+            <p>Social Media Links:</p>
+            <ul class="list-unstyled">
+                <li><a href="https://www.linkedin.com/in/abhinandan-samal-1bb4577a/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                <li><a href="https://github.com/abhinandansamal" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+                <li><a href="https://x.com/Abhinan46314322" target="_blank"><i class="fab fa-twitter"></i> X</a></li>
+                <li><a href="https://www.instagram.com/abhinandansamal/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="testimonials" class="container section-heading">
+        <h2>Testimonials</h2>
+        <div class="testimonial-card">
+            <p>"Hardworking, Passionate, Dedicated"</p>
+            <footer>— Industry Consultant Appreciation (Associated with IBM)</footer>
+        </div>
+        <div class="testimonial-card">
+            <p>"Great attitude towards works. Eye for details. Can work independently. New to KSQL but learnt quickly and improvising each day. Took extra effort to spent time over weekend to deliver artefact for IBM/Fidelity day. Appreciate hard work you have put in."</p>
+            <footer>— Senior Offshore Architect Appreciation (Associated with IBM)</footer>
+        </div>
+        <div class="testimonial-card">
+            <p>"Thank You Very Much for all that you do for the clients and IBM. You have been contributing and giving your best in many areas. Truly appreciate and recognize your efforts. Looking forward to significant contributions from you going forward."</p>
+            <footer>— People Manager Appreciation (Associated with IBM)</footer>
+        </div>
+    </section>
+
+    <section id="certifications" class="container section-heading">
+        <h2>Certifications and Awards</h2>
+        <h3>Certifications</h3>
+        <div class="cert-award-item">
+            <p>IBM Consulting Way (May 2023) - <a href="https://www.credly.com/badges/273ed09a-7fee-4562-a1bf-5581eb98248f/linked_in_profile" target="_blank"><i class="fas fa-external-link-alt"></i> Link</a></p>
+        </div>
+        <div class="cert-award-item">
+            <p>Executive Post-Graduate Programme in Data Science (November 2022) - <a href="https://www.credential.net/89d94967-1ccc-4b2c-81b3-651f2e7fcfb4#gs.a0c31f" target="_blank"><i class="fas fa-external-link-alt"></i> Link</a></p>
+        </div>
+        <h3>Awards</h3>
+        <div class="cert-award-item">
+            <p>Service & Commitment Award (Feb 2020, Associated with Tata Consultancy Services)</p>
+        </div>
+        <div class="cert-award-item">
+            <p>On The Spot (Team) Award (Nov 2019, Issued by Supervisor, Enterprise Architect, Associated with Tata Consultancy Services)</p>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Abhinandan Samal. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a.nav-link').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                const offsetTop = targetElement.getBoundingClientRect().top + window.pageYOffset - 56;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
