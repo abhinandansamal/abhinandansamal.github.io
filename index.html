@@ -111,43 +111,52 @@
             margin-bottom: 10px;
         }
 
-        .testimonial-card,
-        .cert-award-item,
-        .blog-item,
-        .contact-item {
-            background: rgba(255, 255, 255, 0.9);
+        /* Updated CSS for Testimonials */
+        .testimonial-card {
+            background: #ffffff;
             border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 15px;
+            border-radius: 10px;
+            padding: 20px;
             margin-bottom: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
         }
 
-        .testimonial-card:hover,
-        .cert-award-item:hover,
-        .blog-item:hover,
-        .contact-item:hover {
+        .testimonial-card::before {
+            content: "“";
+            font-size: 5rem;
+            color: #f0f2f5;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+        }
+
+        .testimonial-card:hover {
             transform: scale(1.05);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
-        .testimonial-card footer,
-        .cert-award-item a,
-        .contact-item a {
+        .testimonial-card p {
+            font-style: italic;
+            margin: 0 0 10px;
+        }
+
+        .testimonial-card footer {
+            font-weight: bold;
             color: #1d72b8;
-            text-decoration: none;
+            text-align: right;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
         }
 
-        .testimonial-card footer:hover,
-        .cert-award-item a:hover,
-        .contact-item a:hover {
-            text-decoration: underline;
-        }
-
-        footer {
-            background-color: #1d1d1d;
-            color: white;
+        .testimonial-card img {
+            width: 30px;
+            height: 30px;
+            margin-left: 10px;
+            border: none;
         }
 
         /* Modal styles */
@@ -322,19 +331,29 @@
         </div>
     </section>
 
+    <!-- Testimonials Section with IBM Logo -->
     <section id="testimonials" class="container section-heading">
         <h2>Testimonials</h2>
         <div class="testimonial-card">
             <p>"Hardworking, Passionate, Dedicated"</p>
-            <footer>— Industry Consultant Appreciation (Associated with IBM)</footer>
+            <footer>
+                — Industry Consultant Appreciation
+                <img src="images/ibm_logo.png" alt="IBM Logo">
+            </footer>
         </div>
         <div class="testimonial-card">
             <p>"Great attitude towards works. Eye for details. Can work independently. New to KSQL but learnt quickly and improvising each day. Took extra effort to spent time over weekend to deliver artefact for IBM/Fidelity day. Appreciate hard work you have put in."</p>
-            <footer>— Senior Offshore Architect Appreciation (Associated with IBM)</footer>
+            <footer>
+                — Senior Offshore Architect Appreciation
+                <img src="images/ibm_logo.png" alt="IBM Logo">
+            </footer>
         </div>
         <div class="testimonial-card">
             <p>"Thank You Very Much for all that you do for the clients and IBM. You have been contributing and giving your best in many areas. Truly appreciate and recognize your efforts. Looking forward to significant contributions from you going forward."</p>
-            <footer>— People Manager Appreciation (Associated with IBM)</footer>
+            <footer>
+                — People Manager Appreciation
+                <img src="images/ibm_logo.png" alt="IBM Logo">
+            </footer>
         </div>
     </section>
 
