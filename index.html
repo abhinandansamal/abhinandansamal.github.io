@@ -55,6 +55,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
+            flex-wrap: wrap;
         }
 
         .about-section:hover {
@@ -63,10 +64,15 @@
         }
 
         .about-section img {
-            max-width: 300px;
-            height: auto;
+            width: 300px;
+            height: 300px;
             border-radius: 50%;
+            object-fit: cover;
             border: 3px solid #1d72b8;
+        }
+
+        .about-text {
+            max-width: 600px;
         }
 
         .card img {
@@ -159,7 +165,7 @@
     <section id="about" class="container section-heading">
         <h2>About Me</h2>
         <div class="about-section">
-            <img src="images/IMG_3436.jpeg" alt="Abhinandan Samal" class="img-fluid">
+            <img src="images/6CCF3474-C2EE-4F14-AA6C-BF236D20E171_1_102_a.jpeg" alt="Abhinandan Samal" class="img-fluid">
             <div class="about-text">
                 <p>Hardworking, dedicated, and self-motivated student, passionate about learning, exploring, and contributing to the fields of Data science and AI.</p>
                 <p>My journey started with a Bachelor of Technology in Mechanical Engineering. After graduating, I transitioned into IT, working as a Technical Support Executive at Tata Consultancy Services. My passion for data led me to become a Data Engineer, and eventually, I worked at IBM. In 2023, I moved to Berlin, Germany, to pursue a Master's degree in Data Science. I am hardworking, dedicated, self-motivated, and business-minded, consistently striving to deliver impactful data-driven solutions.</p>
