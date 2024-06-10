@@ -81,10 +81,17 @@
 
         .project-image {
             width: 100%;
-            max-height: 300px;
+            max-height: 400px;
             object-fit: cover;
             margin-bottom: 15px;
             border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         .highlight {
@@ -136,6 +143,26 @@
         footer {
             background-color: #1d1d1d;
             color: white;
+        }
+
+        /* Modal styles */
+        .modal-dialog {
+            max-width: 80%;
+            margin: 1.75rem auto;
+        }
+
+        .modal-content {
+            border-radius: 10px;
+        }
+
+        .modal-body {
+            text-align: center;
+        }
+
+        .modal-body img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -215,26 +242,26 @@
                 <p><span class="highlight">Software Development Practices:</span> Modular code structure, configuration management using YAML, logging, and exception handling</p>
                 <div class="section-title">Visuals</div>
                 <div class="row">
-                    <div class="col-md-6">
-                        <img src="images/boxplot_outlier_visualization.png" alt="Boxplot Outlier Visualization" class="project-image">
+                    <div class="col-12 col-md-6 mb-4">
+                        <img src="images/boxplot_outlier_visualization.png" alt="Boxplot Outlier Visualization" class="project-image" data-toggle="modal" data-target="#imageModal" data-imgsrc="images/boxplot_outlier_visualization.png">
                     </div>
-                    <div class="col-md-6">
-                        <img src="images/correlation_matrix.png" alt="Correlation Matrix" class="project-image">
+                    <div class="col-12 col-md-6 mb-4">
+                        <img src="images/correlation_matrix.png" alt="Correlation Matrix" class="project-image" data-toggle="modal" data-target="#imageModal" data-imgsrc="images/correlation_matrix.png">
                     </div>
-                    <div class="col-md-6">
-                        <img src="images/histogram_qqplot_numerical_data_distribution.png" alt="Histogram and QQ Plot" class="project-image">
+                    <div class="col-12 col-md-6 mb-4">
+                        <img src="images/histogram_qqplot_numerical_data_distribution.png" alt="Histogram and QQ Plot" class="project-image" data-toggle="modal" data-target="#imageModal" data-imgsrc="images/histogram_qqplot_numerical_data_distribution.png">
                     </div>
-                    <div class="col-md-6">
-                        <img src="images/Histograms_Numerical_Features.png" alt="Histograms of Numerical Features" class="project-image">
+                    <div class="col-12 col-md-6 mb-4">
+                        <img src="images/Histograms_Numerical_Features.png" alt="Histograms of Numerical Features" class="project-image" data-toggle="modal" data-target="#imageModal" data-imgsrc="images/Histograms_Numerical_Features.png">
                     </div>
-                    <div class="col-md-6">
-                        <img src="images/pairplot_visualize_feature_relationships.png" alt="Pairplot Visualizing Feature Relationships" class="project-image">
+                    <div class="col-12 col-md-6 mb-4">
+                        <img src="images/pairplot_visualize_feature_relationships.png" alt="Pairplot Visualizing Feature Relationships" class="project-image" data-toggle="modal" data-target="#imageModal" data-imgsrc="images/pairplot_visualize_feature_relationships.png">
                     </div>
-                    <div class="col-md-6">
-                        <img src="images/target_variable_distribution.png" alt="Target Variable Distribution" class="project-image">
+                    <div class="col-12 col-md-6 mb-4">
+                        <img src="images/target_variable_distribution.png" alt="Target Variable Distribution" class="project-image" data-toggle="modal" data-target="#imageModal" data-imgsrc="images/target_variable_distribution.png">
                     </div>
-                    <div class="col-md-6">
-                        <img src="images/abalone_model_performance.png" alt="Model Evaluation Code and Metrics" class="project-image">
+                    <div class="col-12 col-md-6 mb-4">
+                        <img src="images/abalone_model_performance.png" alt="Model Evaluation Code and Metrics" class="project-image" data-toggle="modal" data-target="#imageModal" data-imgsrc="images/abalone_model_performance.png">
                     </div>
                 </div>
                 <p class="card-text"><strong>Link to Code:</strong> <a href="https://github.com/abhinandansamal/abalone-age-prediction.git" target="_blank">GitHub Repository</a></p>
@@ -262,14 +289,14 @@
                 <p><span class="highlight">Software Development Practices:</span> Modular code structure, configuration management using YAML, logging, and exception handling</p>
                 <div class="section-title">Visuals</div>
                 <div class="row">
-                    <div class="col-md-6">
-                        <img src="images/forecast_plot.png" alt="Forecast Plot" class="project-image">
+                    <div class="col-12 col-md-6 mb-4">
+                        <img src="images/forecast_plot.png" alt="Forecast Plot" class="project-image" data-toggle="modal" data-target="#imageModal" data-imgsrc="images/forecast_plot.png">
                     </div>
-                    <div class="col-md-6">
-                        <img src="images/model_evaluation_business_impact_walmart.png" alt="Model Evaluation and Business Impact" class="project-image">
+                    <div class="col-12 col-md-6 mb-4">
+                        <img src="images/model_evaluation_business_impact_walmart.png" alt="Model Evaluation and Business Impact" class="project-image" data-toggle="modal" data-target="#imageModal" data-imgsrc="images/model_evaluation_business_impact_walmart.png">
                     </div>
-                    <div class="col-md-6">
-                        <img src="images/Sales_Distribution_Walmart.png" alt="Sales Distribution" class="project-image">
+                    <div class="col-12 col-md-6 mb-4">
+                        <img src="images/Sales_Distribution_Walmart.png" alt="Sales Distribution" class="project-image" data-toggle="modal" data-target="#imageModal" data-imgsrc="images/Sales_Distribution_Walmart.png">
                     </div>
                 </div>
                 <p class="card-text"><strong>Link to Code:</strong> <a href="https://github.com/abhinandansamal/walmart-unit-sales-forecast.git" target="_blank">GitHub Repository</a></p>
@@ -346,13 +373,30 @@
         <p>&copy; 2024 Abhinandan Samal. All rights reserved.</p>
     </footer>
 
+    <!-- Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel">Image View</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="" alt="Modal Image" id="modalImage">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a.nav-link').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href').substring(1);
                 const targetElement = document.getElementById(targetId);
@@ -362,6 +406,14 @@
                     behavior: 'smooth'
                 });
             });
+        });
+
+        // Modal image display
+        $('#imageModal').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget);
+            var imgSrc = button.data('imgsrc');
+            var modal = $(this);
+            modal.find('#modalImage').attr('src', imgSrc);
         });
     </script>
 </body>
