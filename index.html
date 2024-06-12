@@ -30,6 +30,11 @@
             transition: color 0.3s;
         }
 
+        .nav-link.active {
+            color: #1d72b8; /* Highlight color */
+            font-weight: bold; /* Optional for emphasis */
+        }
+
         .nav-link:hover {
             color: #1d72b8;
         }
@@ -519,6 +524,35 @@
             modal.find('#modalImage').attr('src', imgSrc);
         });
     </script>
+
+    <script>
+        // Function to add or remove 'active' class to nav links
+        function setActiveNavLink() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+        
+            let currentSectionId = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 70; // Adjust offset for better accuracy
+                const sectionHeight = section.offsetHeight;
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === currentSectionId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', setActiveNavLink);
+        document.addEventListener('DOMContentLoaded', setActiveNavLink);
+    </script>
+    
 </body>
 
 </html>
