@@ -159,6 +159,52 @@
             border: none;
         }
 
+        .cert-award-card {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cert-award-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .cert-award-card .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1d72b8;
+        }
+
+        .cert-award-card .card-text {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .cert-award-card a {
+            color: #1d72b8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .cert-award-card a:hover {
+            color: #343a40;
+        }
+
+        .award-logo {
+            width: 50px;
+            height: auto;
+            margin-left: 20px;
+        }
+
         /* Modal styles */
         .modal-dialog {
             max-width: 80%;
@@ -359,24 +405,52 @@
 
     <section id="certifications" class="container section-heading">
         <h2>Certifications</h2>
-        <div class="cert-award-item">
-            <p>IBM Consulting Way (May 2023) - <a href="https://www.credly.com/badges/273ed09a-7fee-4562-a1bf-5581eb98248f/linked_in_profile" target="_blank"><i class="fas fa-external-link-alt"></i> Link</a></p>
-        </div>
-        <div class="cert-award-item">
-            <p>Executive Post-Graduate Programme in Data Science (November 2022) - <a href="https://www.credential.net/89d94967-1ccc-4b2c-81b3-651f2e7fcfb4#gs.a0c31f" target="_blank"><i class="fas fa-external-link-alt"></i> Link</a></p>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="cert-award-card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-certificate"></i> IBM Consulting Way</h5>
+                        <p class="card-text">May 2023</p>
+                        <a href="https://www.credly.com/badges/273ed09a-7fee-4562-a1bf-5581eb98248f/linked_in_profile" target="_blank"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="cert-award-card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-graduation-cap"></i> Executive Post-Graduate Programme in Data Science</h5>
+                        <p class="card-text">November 2022</p>
+                        <a href="https://www.credential.net/89d94967-1ccc-4b2c-81b3-651f2e7fcfb4#gs.a0c31f" target="_blank"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="awards" class="container section-heading">
         <h2>Awards</h2>
-        <div class="cert-award-item">
-            <p>Service & Commitment Award (Feb 2020, Associated with Tata Consultancy Services)</p>
-        </div>
-        <div class="cert-award-item">
-            <p>On The Spot (Team) Award (Nov 2019, Issued by Supervisor, Enterprise Architect, Associated with Tata Consultancy Services)</p>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="cert-award-card d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="card-title"><i class="fas fa-trophy"></i> Service & Commitment Award</h5>
+                        <p class="card-text">Feb 2020</p>
+                    </div>
+                    <img src="images/tcs_logo_rgb_black.png" alt="Tata Consultancy Services" class="award-logo">
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="cert-award-card d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="card-title"><i class="fas fa-medal"></i> On The Spot (Team) Award</h5>
+                        <p class="card-text">Nov 2019, Issued by Supervisor, Enterprise Architect</p>
+                    </div>
+                    <img src="images/tcs_logo_rgb_black.png" alt="Tata Consultancy Services" class="award-logo">
+                </div>
+            </div>
         </div>
     </section>
-
+    
     <section id="contact" class="container section-heading">
         <h2>Contact Information</h2>
         <div class="contact-item">
