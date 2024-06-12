@@ -116,8 +116,7 @@
             margin-bottom: 10px;
         }
 
-        /* Updated CSS for Testimonials */
-        .testimonial-card {
+        .blog-card {
             background: #ffffff;
             border: 1px solid #e0e0e0;
             border-radius: 10px;
@@ -125,43 +124,45 @@
             margin-bottom: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
         }
 
-        .testimonial-card::before {
-            content: "“";
-            font-size: 5rem;
-            color: #f0f2f5;
-            position: absolute;
-            top: -10px;
-            left: 10px;
-        }
-
-        .testimonial-card:hover {
+        .blog-card:hover {
             transform: scale(1.05);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
-        .testimonial-card p {
-            font-style: italic;
-            margin: 0 0 10px;
-        }
-
-        .testimonial-card footer {
-            font-weight: bold;
+        .blog-card .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
             color: #1d72b8;
-            text-align: right;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
+            margin-bottom: 10px;
         }
 
-        .testimonial-card img {
-            width: 30px;
-            height: 30px;
-            margin-left: 10px;
-            border: none;
+        .blog-card a {
+            color: #1d72b8;
+            text-decoration: none;
+            transition: color 0.3s;
+            margin-bottom: 10px;
+        }
+
+        .blog-card a:hover {
+            color: #343a40;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: auto;
+        }
+
+        .medium-logo {
+            width: 40px;
+            height: auto;
+            margin-top: 10px;
         }
 
         .cert-award-card {
@@ -215,6 +216,54 @@
             padding-right: 20px;
         }
 
+        /* Updated CSS for Testimonials */
+        .testimonial-card {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: "“";
+            font-size: 5rem;
+            color: #f0f2f5;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+        }
+
+        .testimonial-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin: 0 0 10px;
+        }
+
+        .testimonial-card footer {
+            font-weight: bold;
+            color: #1d72b8;
+            text-align: right;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .testimonial-card img {
+            width: 30px;
+            height: 30px;
+            margin-left: 10px;
+            border: none;
+        }
+
         /* Modal styles */
         .modal-dialog {
             max-width: 80%;
@@ -266,7 +315,7 @@
             <div class="about-text">
                 <p>Hardworking, dedicated, and self-motivated student, passionate about learning, exploring, and contributing to the fields of Data science and AI.</p>
                 <p>My journey started with a Bachelor of Technology in Mechanical Engineering. After graduating, I transitioned into IT, working as a Technical Support Executive at Tata Consultancy Services. My passion for data led me to become a Data Engineer, and eventually, I worked at IBM. In 2023, I moved to Berlin, Germany, to pursue a Master's degree in Data Science. I am hardworking, dedicated, self-motivated, and business-minded, consistently striving to deliver impactful data-driven solutions.</p>
-                <p>Apart from my studies, I have a strong interest in cricket. During my graduation, I represented my college in various cricket leagues, and later, I represented TCS in corporate cricket leagues.</p>
+                <p>Apart from my studies, I have a strong interest in Cricket. During my graduation, I represented my college in various cricket leagues, and later, I represented TCS in corporate cricket leagues.</p>
             </div>
         </div>
     </section>
@@ -376,14 +425,40 @@
 
     <section id="blogs" class="container section-heading">
         <h2>Blog or Articles</h2>
-        <div class="blog-item">
-            <p><a href="https://medium.com/@abhinandan198/understanding-and-preventing-data-leakage-in-machine-learning-a-practical-guide-109c2cec4d3d" target="_blank"><i class="fas fa-external-link-alt"></i> Understanding and Preventing Data Leakage in Machine Learning: A Practical Guide</a></p>
-        </div>
-        <div class="blog-item">
-            <p><a href="https://medium.com/@abhinandan198/exploring-data-with-sweetviz-a-comprehensive-guide-4ccd7d59d957" target="_blank"><i class="fas fa-external-link-alt"></i> Exploring Data with Sweetviz: A Comprehensive Guide</a></p>
-        </div>
-        <div class="blog-item">
-            <p><a href="https://medium.com/@abhinandan198/building-ml-models-understanding-algorithm-assumptions-a5e5c462ce09" target="_blank"><i class="fas fa-external-link-alt"></i> Building ML Models: Understanding Algorithm Assumptions</a></p>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="blog-card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-blog"></i> Understanding and Preventing Data Leakage in Machine Learning: A Practical Guide</h5>
+                        <a href="https://medium.com/@abhinandan198/understanding-and-preventing-data-leakage-in-machine-learning-a-practical-guide-109c2cec4d3d" target="_blank"><i class="fas fa-external-link-alt"></i> Read Article</a>
+                        <div class="logo-container">
+                            <img src="images/Medium-Logo-Black-RGB@1x.jpg" alt="Medium Logo" class="medium-logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="blog-card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-blog"></i> Exploring Data with Sweetviz: A Comprehensive Guide</h5>
+                        <a href="https://medium.com/@abhinandan198/exploring-data-with-sweetviz-a-comprehensive-guide-4ccd7d59d957" target="_blank"><i class="fas fa-external-link-alt"></i> Read Article</a>
+                        <div class="logo-container">
+                            <img src="images/Medium-Logo-Black-RGB@1x.jpg" alt="Medium Logo" class="medium-logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="blog-card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-blog"></i> Building ML Models: Understanding Algorithm Assumptions</h5>
+                        <a href="https://medium.com/@abhinandan198/building-ml-models-understanding-algorithm-assumptions-a5e5c462ce09" target="_blank"><i class="fas fa-external-link-alt"></i> Read Article</a>
+                        <div class="logo-container">
+                            <img src="images/Medium-Logo-Black-RGB@1x.jpg" alt="Medium Logo" class="medium-logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
