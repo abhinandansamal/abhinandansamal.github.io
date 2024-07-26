@@ -639,16 +639,6 @@
             });
         });
 
-        // Modal image display
-        $('#imageModal').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget);
-            var imgSrc = button.data('imgsrc');
-            var modal = $(this);
-            modal.find('#modalImage').attr('src', imgSrc);
-        });
-    </script>
-
-    <script>
         // Function to add or remove 'active' class to nav links
         function setActiveNavLink() {
             const sections = document.querySelectorAll('section');
