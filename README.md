@@ -7,10 +7,9 @@ Welcome to my data science portfolio! This repository showcases my skills, proje
 - [Skills](#skills)
 - [Projects](#projects)
 - [Blog or Articles](#blogs)
-- [Certifications](#certifications)
-- [Awards](#awards)
+- [Contact Information](#contact-information)
 - [Testimonials](#testimonials)
-- [Contact Information](#contact)
+- [Certifications and Awards](#certifications-and-awards)
 - [License](#license)
 
 ## 🚀 About Me
