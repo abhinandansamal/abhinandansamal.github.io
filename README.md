@@ -3,14 +3,14 @@
 Welcome to my data science portfolio! This repository showcases my skills, projects, and experience in the field of data science and AI. Explore the sections below to learn more about me and my work.
 
 ## 📑 Table of Contents
-- [About Me](#about-me)
-- [Skills](#skills)
-- [Projects](#projects)
-- [Blog or Articles](#blogs)
-- [Contact Information](#contact-information)
-- [Testimonials](#testimonials)
-- [Certifications and Awards](#certifications-and-awards)
-- [License](#license)
+- About Me
+- Skills
+- Projects
+- Blog or Articles
+- Contact Information
+- Testimonials
+- Certifications and Awards
+- License
 
 ## 🚀 About Me
 I am a passionate data scientist with a background in Mechanical Engineering and extensive experience in IT. My journey has taken me from technical support at Tata Consultancy Services to data engineering at IBM, and now to pursuing a Master's degree in Data Science in Berlin, Germany. I am dedicated to leveraging data-driven solutions to drive business impact.
