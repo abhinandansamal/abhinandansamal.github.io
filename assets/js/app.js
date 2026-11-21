@@ -10,7 +10,7 @@ class App extends Component {
     this._sec = { storyH2: 'story', chTitle: 'story', chBody: 'story', tagline: 'moment', bringH2: 'bring', capProof: 'bring', workH2: 'work', resH2: 'research', stackH2: 'stack', certH2: 'certs', contactH2: 'contact' };
     this._speed = { chBody: 6, capProof: 5 };
     this._ids = ['story', 'moment', 'bring', 'work', 'research', 'stack', 'certs', 'contact', 'numbers'];
-    this._spyMap = { story: 'story', moment: 'story', bring: 'bring', work: 'work', research: 'research', stack: 'stack', certs: 'certs', contact: 'certs' };
+    this._spyMap = { story: 'story', moment: 'story', bring: 'bring', work: 'work', research: 'research', stack: 'stack', certs: 'certs', contact: 'contact' };
     this._live = false;
     try {
       const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -49,6 +49,8 @@ class App extends Component {
       if (this._spyMap[id] && r.top <= vh * 0.3 && r.bottom > vh * 0.3) active = this._spyMap[id];
       if (!seen[id] && r.top < vh * 0.8) { seen[id] = true; changed = true; }
     });
+    const se = document.scrollingElement || document.documentElement;
+    if (se && se.scrollHeight > vh + 50 && se.scrollTop + vh >= se.scrollHeight - 4) active = 'contact';
     const upd = {};
     if (active !== this.state.section && !(this._lockUntil && Date.now() < this._lockUntil)) upd.section = active;
     if (changed) upd.seen = seen;
@@ -93,7 +95,7 @@ class App extends Component {
     ['story', 'bring', 'work', 'stack', 'certs', 'numbers'].forEach((k) => { stg[k] = armed[k] ? (seenS[k] ? 'stagger go' : 'stagger') : ''; });
 
     const t = {
-      navStory: L('Story', 'Werdegang'), navCaps: L('Capabilities', 'Kompetenzen'), navWork: L('Work', 'Projekte'), navResearch: L('Research', 'Forschung'), navStack: L('Stack', 'Tech-Stack'), navCerts: L('Certifications', 'Zertifikate'),
+      navStory: L('Story', 'Werdegang'), navCaps: L('Capabilities', 'Kompetenzen'), navWork: L('Work', 'Projekte'), navResearch: L('Research', 'Forschung'), navStack: L('Stack', 'Tech-Stack'), navCerts: L('Certifications', 'Zertifikate'), navContact: L('Contact', 'Kontakt'),
       cv: L('CV (PDF)', 'Lebenslauf (PDF)'),
       hello: L('Hi, I’m', 'Hallo, ich bin'),
       h1b: L('I turn LLM research into AI systems that hold up in production.', 'Ich mache aus LLM-Forschung KI-Systeme, die im Produktivbetrieb bestehen.'),
@@ -140,7 +142,7 @@ class App extends Component {
       pendingBtn: L('Request the paper', 'Paper anfragen')
     };
 
-    const NAV = [ { id: 'story', label: t.navStory }, { id: 'bring', label: t.navCaps }, { id: 'work', label: t.navWork }, { id: 'research', label: t.navResearch }, { id: 'stack', label: t.navStack }, { id: 'certs', label: t.navCerts } ];
+    const NAV = [ { id: 'story', label: t.navStory }, { id: 'bring', label: t.navCaps }, { id: 'work', label: t.navWork }, { id: 'research', label: t.navResearch }, { id: 'stack', label: t.navStack }, { id: 'certs', label: t.navCerts }, { id: 'contact', label: t.navContact } ];
     const nav = NAV.map((n) => ({ label: n.label, href: '#' + n.id, active: n.id === st.section, inactive: n.id !== st.section, pick: () => { this._lockUntil = Date.now() + 900; this.setState({ section: n.id }); } }));
     const langs = [ { id: 'en', label: 'EN' }, { id: 'de', label: 'DE' } ].map((l) => ({ label: l.label, active: l.id === st.lang, inactive: l.id !== st.lang, pick: () => { try { document.documentElement.lang = l.id; } catch (e) {} this.setState({ lang: l.id, typed: {} }); } }));
 
