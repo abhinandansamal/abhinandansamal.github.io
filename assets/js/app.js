@@ -7,10 +7,10 @@ class App extends Component {
   }
   componentDidMount() {
     this._targets = this._targets || {};
-    this._sec = { storyH2: 'story', chTitle: 'story', chBody: 'story', tagline: 'moment', bringH2: 'bring', capProof: 'bring', workH2: 'work', resH2: 'research', stackH2: 'stack', certH2: 'certs', contactH2: 'contact' };
+    this._sec = { storyH2: 'story', chTitle: 'story', chBody: 'story', tagline: 'moment', bringH2: 'bring', capProof: 'bring', workH2: 'work', resH2: 'research', stackH2: 'stack', certH2: 'certs', recsH2: 'recs', contactH2: 'contact' };
     this._speed = { chBody: 6, capProof: 5 };
-    this._ids = ['story', 'moment', 'bring', 'work', 'research', 'stack', 'certs', 'contact', 'numbers'];
-    this._spyMap = { story: 'story', moment: 'story', bring: 'bring', work: 'work', research: 'research', stack: 'stack', certs: 'certs', contact: 'contact' };
+    this._ids = ['story', 'moment', 'work', 'research', 'stack', 'bring', 'certs', 'recs', 'contact', 'numbers'];
+    this._spyMap = { story: 'story', moment: 'story', bring: 'bring', work: 'work', research: 'research', stack: 'stack', certs: 'certs', recs: 'recs', contact: 'contact' };
     this._live = false;
     try {
       const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -92,7 +92,7 @@ class App extends Component {
     };
     const armed = st.armed || {}, seenS = st.seen || {};
     const stg = {};
-    ['story', 'bring', 'work', 'stack', 'certs', 'numbers'].forEach((k) => { stg[k] = armed[k] ? (seenS[k] ? 'stagger go' : 'stagger') : ''; });
+    ['story', 'bring', 'work', 'stack', 'certs', 'numbers', 'recs'].forEach((k) => { stg[k] = armed[k] ? (seenS[k] ? 'stagger go' : 'stagger') : ''; });
 
     const t = {
       navStory: L('Story', 'Werdegang'), navCaps: L('Capabilities', 'Kompetenzen'), navWork: L('Work', 'Projekte'), navResearch: L('Research', 'Forschung'), navStack: L('Stack', 'Tech-Stack'), navCerts: L('Certifications', 'Zertifikate'), navContact: L('Contact', 'Kontakt'),
@@ -135,6 +135,9 @@ class App extends Component {
       building: L('Currently building: Recall Radar · v1.0 late Nov 2026', 'Aktuell in Arbeit: Recall Radar · v1.0 Ende Nov. 2026'),
       footer: L('© 2026 Abhinandan Samal · Berlin · no cookies, no trackers', '© 2026 Abhinandan Samal · Berlin · keine Cookies, kein Tracking'),
       privacy: L('Privacy policy', 'Datenschutz'),
+      codeModels: L('CODE, MODELS & DATA', 'CODE, MODELLE & DATEN'),
+      navRecs: L('Recommendations', 'Empfehlungen'),
+      recsEyebrow: L('RECOMMENDATIONS', 'EMPFEHLUNGEN'), recsH2: L('What people I’ve worked with say.', 'Was Kolleginnen und Kollegen sagen.'), recsMore: L('Read all recommendations on LinkedIn', 'Alle Empfehlungen auf LinkedIn lesen'), recsNote: L('Quoted from LinkedIn recommendations, shortened.', 'Zitiert aus LinkedIn-Empfehlungen, gekürzt; im englischen Original.'),
       insideMsc: L('Inside the M.Sc.:', 'Im M.Sc.:'),
       viewOpen: L('Open', 'Öffnen'), viewClose: L('Close', 'Schließen'),
       pendingH_unused: L('Paper PDF coming soon', 'Paper-PDF folgt in Kürze'),
@@ -142,21 +145,21 @@ class App extends Component {
       pendingBtn: L('Request the paper', 'Paper anfragen')
     };
 
-    const NAV = [ { id: 'story', label: t.navStory }, { id: 'bring', label: t.navCaps }, { id: 'work', label: t.navWork }, { id: 'research', label: t.navResearch }, { id: 'stack', label: t.navStack }, { id: 'certs', label: t.navCerts }, { id: 'contact', label: t.navContact } ];
+    const NAV = [ { id: 'story', label: t.navStory }, { id: 'work', label: t.navWork }, { id: 'research', label: t.navResearch }, { id: 'stack', label: t.navStack }, { id: 'bring', label: t.navCaps }, { id: 'certs', label: t.navCerts }, { id: 'recs', label: t.navRecs }, { id: 'contact', label: t.navContact } ];
     const nav = NAV.map((n) => ({ label: n.label, href: '#' + n.id, active: n.id === st.section, inactive: n.id !== st.section, pick: () => { this._lockUntil = Date.now() + 900; this.setState({ section: n.id }); } }));
     const langs = [ { id: 'en', label: 'EN' }, { id: 'de', label: 'DE' } ].map((l) => ({ label: l.label, active: l.id === st.lang, inactive: l.id !== st.lang, pick: () => { try { document.documentElement.lang = l.id; } catch (e) {} this.setState({ lang: l.id, typed: {} }); } }));
 
     const CH = [
       { tab: L('2017–23 · Industry', '2017–23 · Industrie'), kicker: L('Prologue · Industry', 'Prolog · Industrie'), subLabel: L('Inside the 6 years:', 'In den 6 Jahren:'), subs: [
         { sub: L('Overview', 'Überblick'), years: '2017 – 2023', org: L('TCS and IBM · 6 years in industry', 'TCS und IBM · 6 Jahre Industrie'), title: L('The production foundation', 'Das Produktionsfundament'), body: L('Six years across telecom, financial services, retail banking and insurance: Data Analyst, Big Data Engineer and Machine Learning Engineer at TCS, then Cloud Data Engineer at IBM. The constant: systems that run every day for real clients, with SLAs, data-protection rules and production incidents to handle.', 'Sechs Jahre in Telekommunikation, Finanzdienstleistung, Retail-Banking und Versicherung: Data Analyst, Big Data Engineer und Machine Learning Engineer bei TCS, danach Cloud Data Engineer bei IBM. Die Konstante: Systeme, die täglich für echte Kunden laufen, mit SLAs, Datenschutzvorgaben und echten Produktionsvorfällen.'), wins: [ { n: L('13M customers', '13 Mio. Kunden'), l: L('served by a recommender I built · +15% cross-sell, +9% up-sell', 'bedient von einem Empfehlungssystem, das ich gebaut habe · +15 % Cross-Selling, +9 % Up-Selling') }, { n: L('>90% recall', '>90 % Recall'), l: L('churn model in production with automated retraining', 'Churn-Modell in Produktion mit automatisiertem Retraining') }, { n: '−30%', l: L('error-processing time in real-time Kafka pipelines', 'Fehlerverarbeitungszeit in Echtzeit-Kafka-Pipelines') } ] },
-        { sub: L('2017–18 · Data Analyst', '2017–18 · Data Analyst'), years: L('Feb 2017 – Mar 2018', 'Feb. 2017 – März 2018'), org: L('Data Analyst · TCS · Hyderabad, India', 'Data Analyst · TCS · Hyderabad, Indien'), client: L('Client: Telecom Client, India', 'Kunde: Telekommunikationskunde, Indien'), title: L('Learning the data, and the client', 'Die Daten verstehen – und den Kunden'), body: L('Primary point of contact for client queries and escalations. Migrated the client’s databases by rewriting connection scripts, kept monthly reporting running throughout, built Power BI dashboards, and automated data extraction and reporting with UNIX shell scripts and PL/SQL.', 'Erster Ansprechpartner für Kundenanfragen und Eskalationen. Datenbanken des Kunden migriert und Verbindungsskripte angepasst, die monatliche Berichterstattung dabei ohne Unterbrechung weitergeführt, Power-BI-Dashboards gebaut und Datenextraktion sowie Reporting mit UNIX-Shell-Skripten und PL/SQL automatisiert.'), wins: [ { n: L('100% in SLA', '100 % im SLA'), l: L('client escalations and queries resolved', 'Kundeneskalationen und Anfragen gelöst') }, { n: L('0 disruptions', '0 Ausfälle'), l: L('in reporting during the database migration', 'im Reporting während der Datenbankmigration') }, { n: L('~12 → <3 h', '~12 → <3 Std.'), l: L('manual reporting per week after automation', 'manuelles Reporting pro Woche nach Automatisierung') } ], tools: ['PL/SQL', 'UNIX shell', 'SQL Developer', 'Toad', 'Power BI', 'MS Excel'] },
-        { sub: L('2018–20 · Big Data Engineer', '2018–20 · Big Data Engineer'), years: L('Apr 2018 – May 2020', 'Apr. 2018 – Mai 2020'), org: L('Big Data Engineer · TCS · Bhubaneswar, India', 'Big Data Engineer · TCS · Bhubaneswar, Indien'), client: L('Client: Financial Services Client, UK', 'Kunde: Finanzdienstleister, Großbritannien'), title: L('Building the pipelines', 'Die Pipelines bauen'), body: L('Designed and coded custom batch and real-time ETL pipelines for financial applications and tested them end to end. Introduced HBase and PostgreSQL as real-time sinks and a config-driven handler that routes failed records to HDFS or local storage, so bad data is kept for reprocessing instead of lost. Led a PySpark proof of concept that sped up both batch and streaming workloads and presented it to senior management.', 'Individuelle Batch- und Echtzeit-ETL-Pipelines für Finanzanwendungen entworfen, entwickelt und durchgängig getestet. HBase und PostgreSQL als Echtzeit-Senken eingeführt sowie einen konfigurierbaren Handler, der fehlerhafte Datensätze in HDFS oder lokal ablegt – sie bleiben für die Nachverarbeitung erhalten statt verloren zu gehen. Einen PySpark-Proof-of-Concept geleitet, der Batch- und Streaming-Workloads beschleunigte, und ihn dem Senior Management präsentiert.'), wins: [ { n: L('~1.5 TB/day', '~1,5 TB/Tag'), l: L('batch and real-time data processed', 'Batch- und Echtzeitdaten verarbeitet') }, { n: L('6 h → <2 h', '6 Std. → <2 Std.'), l: L('nightly batch after the PySpark migration (3× throughput)', 'nächtlicher Batch nach PySpark-Migration (3× Durchsatz)') } ], tools: ['Java', 'Python', 'PySpark', 'Kafka', 'Hadoop (HDFS, Hive, HBase)', 'PostgreSQL'] },
-        { sub: L('2020–22 · ML Engineer', '2020–22 · ML Engineer'), years: L('Jun 2020 – Jun 2022', 'Juni 2020 – Juni 2022'), org: L('Machine Learning Engineer · TCS · Bhubaneswar, India', 'Machine Learning Engineer · TCS · Bhubaneswar, Indien'), client: L('Client: Retail Bank Client, UK', 'Kunde: Retail-Bank, Großbritannien'), title: L('First models in production', 'Erste Modelle in Produktion'), body: L('Two production ML systems for a bank, from stakeholder workshops on which attributes to use and how to encrypt personal data, to deployment on AWS EMR and Kubernetes with monitoring dashboards.', 'Zwei produktive ML-Systeme für eine Bank – von Stakeholder-Workshops zu Attributen und Verschlüsselung personenbezogener Daten bis zum Deployment auf AWS EMR und Kubernetes mit Monitoring-Dashboards.'), wins: [ { n: L('13M customers', '13 Mio. Kunden'), l: L('scored by the event-detection and offer pipeline', 'bewertet von der Event-Erkennungs- und Angebots-Pipeline') }, { n: '+15% / +9%', l: L('cross-sell / up-sell from targeted offers', 'Cross-Selling / Up-Selling durch gezielte Angebote') }, { n: L('>90% recall', '>90 % Recall'), l: L('churn model, retrained automatically', 'Churn-Modell, automatisch nachtrainiert') } ],
+        { sub: L('2017–18 · Data Analyst', '2017–18 · Data Analyst'), years: L('Feb 2017 – Mar 2018', 'Feb. 2017 – März 2018'), org: L('Data Analyst · TCS · Hyderabad, India', 'Data Analyst · TCS · Hyderabad, Indien'), client: L('Client: Telecom, India', 'Kunde: Telekommunikation, Indien'), title: L('Learning the data, and the client', 'Die Daten verstehen – und den Kunden'), body: L('Primary point of contact for client queries and escalations. Migrated the client’s databases by rewriting connection scripts, kept monthly reporting running throughout, built Power BI dashboards, and automated data extraction and reporting with UNIX shell scripts and PL/SQL.', 'Erster Ansprechpartner für Kundenanfragen und Eskalationen. Datenbanken des Kunden migriert und Verbindungsskripte angepasst, die monatliche Berichterstattung dabei ohne Unterbrechung weitergeführt, Power-BI-Dashboards gebaut und Datenextraktion sowie Reporting mit UNIX-Shell-Skripten und PL/SQL automatisiert.'), wins: [ { n: L('100% in SLA', '100 % im SLA'), l: L('client escalations and queries resolved', 'Kundeneskalationen und Anfragen gelöst') }, { n: L('0 disruptions', '0 Ausfälle'), l: L('in reporting during the database migration', 'im Reporting während der Datenbankmigration') }, { n: L('~12 → <3 h', '~12 → <3 Std.'), l: L('manual reporting per week after automation', 'manuelles Reporting pro Woche nach Automatisierung') } ], tools: ['PL/SQL', 'UNIX shell', 'SQL Developer', 'Toad', 'Power BI', 'MS Excel'] },
+        { sub: L('2018–20 · Big Data Engineer', '2018–20 · Big Data Engineer'), years: L('Apr 2018 – May 2020', 'Apr. 2018 – Mai 2020'), org: L('Big Data Engineer · TCS · Bhubaneswar, India', 'Big Data Engineer · TCS · Bhubaneswar, Indien'), client: L('Client: Financial Services, UK', 'Kunde: Finanzdienstleistung, Großbritannien'), title: L('Building the pipelines', 'Die Pipelines bauen'), body: L('Designed and coded custom batch and real-time ETL pipelines for financial applications and tested them end to end. Introduced HBase and PostgreSQL as real-time sinks and a config-driven handler that routes failed records to HDFS or local storage, so bad data is kept for reprocessing instead of lost. Led a PySpark proof of concept that sped up both batch and streaming workloads and presented it to senior management.', 'Individuelle Batch- und Echtzeit-ETL-Pipelines für Finanzanwendungen entworfen, entwickelt und durchgängig getestet. HBase und PostgreSQL als Echtzeit-Senken eingeführt sowie einen konfigurierbaren Handler, der fehlerhafte Datensätze in HDFS oder lokal ablegt – sie bleiben für die Nachverarbeitung erhalten statt verloren zu gehen. Einen PySpark-Proof-of-Concept geleitet, der Batch- und Streaming-Workloads beschleunigte, und ihn dem Senior Management präsentiert.'), wins: [ { n: L('~1.5 TB/day', '~1,5 TB/Tag'), l: L('batch and real-time data processed', 'Batch- und Echtzeitdaten verarbeitet') }, { n: L('6 h → <2 h', '6 Std. → <2 Std.'), l: L('nightly batch after the PySpark migration (3× throughput)', 'nächtlicher Batch nach PySpark-Migration (3× Durchsatz)') } ], tools: ['Java', 'Python', 'PySpark', 'Kafka', 'Hadoop (HDFS, Hive, HBase)', 'PostgreSQL'] },
+        { sub: L('2020–22 · ML Engineer', '2020–22 · ML Engineer'), years: L('Jun 2020 – Jun 2022', 'Juni 2020 – Juni 2022'), org: L('Machine Learning Engineer · TCS · Bhubaneswar, India', 'Machine Learning Engineer · TCS · Bhubaneswar, Indien'), client: L('Client: Retail Bank, UK', 'Kunde: Retail-Bank, Großbritannien'), title: L('First models in production', 'Erste Modelle in Produktion'), body: L('Two production ML systems for a bank, from stakeholder workshops on which attributes to use and how to encrypt personal data, to deployment on AWS EMR and Kubernetes with monitoring dashboards.', 'Zwei produktive ML-Systeme für eine Bank – von Stakeholder-Workshops zu Attributen und Verschlüsselung personenbezogener Daten bis zum Deployment auf AWS EMR und Kubernetes mit Monitoring-Dashboards.'), wins: [ { n: L('13M customers', '13 Mio. Kunden'), l: L('scored by the event-detection and offer pipeline', 'bewertet von der Event-Erkennungs- und Angebots-Pipeline') }, { n: '+15% / +9%', l: L('cross-sell / up-sell from targeted offers', 'Cross-Selling / Up-Selling durch gezielte Angebote') }, { n: L('>90% recall', '>90 % Recall'), l: L('churn model, retrained automatically', 'Churn-Modell, automatisch nachtrainiert') } ],
           projects: [
             { name: L('Customer churn prediction', 'Vorhersage von Kundenabwanderung'), when: L('Retail bank', 'Retail-Bank'), what: L('Logistic Regression, Random Forest and LightGBM, tuned for recall so fewer at-risk customers are missed. Deployed with dashboards and automatic retraining every 6 months, or as soon as recall drops below 90%.', 'Logistic Regression, Random Forest und LightGBM, auf Recall optimiert, damit weniger abwanderungsgefährdete Kunden übersehen werden. Deployment mit Dashboards und automatischem Retraining alle 6 Monate oder sobald der Recall unter 90 % fällt.'), metric: L('Recall consistently above 90%', 'Recall konstant über 90 %') },
             { name: L('Event-driven offer recommender', 'Ereignisbasierte Angebotsempfehlung'), when: L('Retail bank · 13M customers', 'Retail-Bank · 13 Mio. Kunden'), what: L('Detected unusual transactions (IQR) and spending trends (Mann-Kendall test), then recommended offers with a hybrid CMFRec model: collaborative filtering for existing customers, content-based filtering for new ones.', 'Auffällige Transaktionen (IQR) und Ausgabetrends (Mann-Kendall-Test) erkannt und Angebote mit einem hybriden CMFRec-Modell empfohlen: Collaborative Filtering für Bestandskunden, Content-based Filtering für Neukunden.'), metric: L('+15% cross-sell · +9% up-sell', '+15 % Cross-Selling · +9 % Up-Selling') }
           ], tools: ['Python', 'SQL', 'scikit-learn', 'LightGBM', 'CMFRec', 'AWS EMR', 'Kubernetes', 'Tableau'] },
-        { sub: L('2022–23 · Cloud Data Engineer', '2022–23 · Cloud Data Engineer'), years: L('Jul 2022 – Jun 2023', 'Juli 2022 – Juni 2023'), org: L('Cloud Data Engineer · IBM · Hyderabad, India', 'Cloud Data Engineer · IBM · Hyderabad, Indien'), client: L('Client: Life Insurance Client, New Zealand', 'Kunde: Lebensversicherer, Neuseeland'), title: L('Real-time data at cloud scale', 'Echtzeitdaten im Cloud-Maßstab'), body: L('For a New Zealand life insurer, built the real-time layer that captures, processes and stores JSON and AVRO events for business analytics. Wrote 50+ ksqlDB objects on Confluent Cloud for flat and deeply nested data, and a Kafka deserialization solution that made error handling faster and more reliable. Kafka topics are defined as code with Terraform, and Azure DevOps pipelines deploy automatically to sandbox, test and dev. Worked with senior architects and the client to finalise the pipeline design.', 'Für einen neuseeländischen Lebensversicherer die Echtzeitschicht gebaut, die JSON- und AVRO-Events für Business Analytics erfasst, verarbeitet und speichert. Über 50 ksqlDB-Objekte auf Confluent Cloud für flache und tief verschachtelte Daten entwickelt sowie eine Kafka-Deserialisierungslösung, die die Fehlerbehandlung schneller und zuverlässiger macht. Kafka-Topics sind per Terraform als Code definiert; Azure-DevOps-Pipelines deployen automatisch nach Sandbox, Test und Dev. Mit Senior-Architekten und dem Kunden das finale Pipeline-Design erarbeitet.'), wins: [ { n: '50+', l: L('ksqlDB objects for nested JSON and AVRO events', 'ksqlDB-Objekte für verschachtelte JSON- und AVRO-Events') }, { n: '−30%', l: L('error-processing time via Kafka deserialization', 'Fehlerverarbeitungszeit durch Kafka-Deserialisierung') }, { n: L('2 days → 30 min', '2 Tage → 30 Min.'), l: L('environment provisioning with Terraform and CI/CD', 'Umgebungs-Provisionierung mit Terraform und CI/CD') } ], tools: ['Confluent Cloud', 'ksqlDB', 'Kafka', 'Terraform', 'Azure DevOps'] }
+        { sub: L('2022–23 · Cloud Data Engineer', '2022–23 · Cloud Data Engineer'), years: L('Jul 2022 – Jun 2023', 'Juli 2022 – Juni 2023'), org: L('Cloud Data Engineer · IBM · Hyderabad, India', 'Cloud Data Engineer · IBM · Hyderabad, Indien'), client: L('Client: Life Insurance, New Zealand', 'Kunde: Lebensversicherung, Neuseeland'), title: L('Real-time data at cloud scale', 'Echtzeitdaten im Cloud-Maßstab'), body: L('For a New Zealand life insurer, built the real-time layer that captures, processes and stores JSON and AVRO events for business analytics. Wrote 50+ ksqlDB objects on Confluent Cloud for flat and deeply nested data, and a Kafka deserialization solution that made error handling faster and more reliable. Kafka topics are defined as code with Terraform, and Azure DevOps pipelines deploy automatically to sandbox, test and dev. Worked with senior architects and the client to finalise the pipeline design.', 'Für einen neuseeländischen Lebensversicherer die Echtzeitschicht gebaut, die JSON- und AVRO-Events für Business Analytics erfasst, verarbeitet und speichert. Über 50 ksqlDB-Objekte auf Confluent Cloud für flache und tief verschachtelte Daten entwickelt sowie eine Kafka-Deserialisierungslösung, die die Fehlerbehandlung schneller und zuverlässiger macht. Kafka-Topics sind per Terraform als Code definiert; Azure-DevOps-Pipelines deployen automatisch nach Sandbox, Test und Dev. Mit Senior-Architekten und dem Kunden das finale Pipeline-Design erarbeitet.'), wins: [ { n: '50+', l: L('ksqlDB objects for nested JSON and AVRO events', 'ksqlDB-Objekte für verschachtelte JSON- und AVRO-Events') }, { n: '−30%', l: L('error-processing time via Kafka deserialization', 'Fehlerverarbeitungszeit durch Kafka-Deserialisierung') }, { n: L('2 days → 30 min', '2 Tage → 30 Min.'), l: L('environment provisioning with Terraform and CI/CD', 'Umgebungs-Provisionierung mit Terraform und CI/CD') } ], tools: ['Confluent Cloud', 'ksqlDB', 'Kafka', 'Terraform', 'Azure DevOps'] }
       ] },
       { tab: L('2023–25 · M.Sc. Berlin', '2023–25 · M.Sc. Berlin'), kicker: L('Chapter 01 · M.Sc.', 'Kapitel 01 · M.Sc.'), subLabel: L('Inside the M.Sc.:', 'Im M.Sc.:'), subs: [
         { sub: L('Overview', 'Überblick'), years: L('Jul 2023 – Nov 2025', 'Juli 2023 – Nov. 2025'), org: L('M.Sc. Data Science · IU International University of Applied Sciences · Berlin', 'M.Sc. Data Science · IU International University of Applied Sciences · Berlin'), title: L('Starting over, on purpose', 'Bewusster Neustart'), body: L('Moved to Germany for a full-time M.Sc. in Data Science focused on ML systems and generative AI, to work on the models themselves rather than the pipelines around them. Inside the degree: three industry-simulation ML projects and a research thesis on low-resource machine translation.', 'Umzug nach Deutschland für einen Vollzeit-M.Sc. Data Science mit Schwerpunkt ML-Systeme und generative KI – um an den Modellen selbst zu arbeiten statt nur an den Pipelines drumherum. Teil des Studiums: drei Industrie-Simulationsprojekte im Bereich ML und eine Forschungsarbeit zu maschineller Übersetzung für ressourcenarme Sprachen.'), wins: [ { n: L('Grade 1.9', 'Note 1,9'), l: L('M.Sc. Data Science, completed Nov 2025', 'M.Sc. Data Science, abgeschlossen Nov. 2025') }, { n: L('3 projects + thesis', '3 Projekte + Masterarbeit'), l: L('applied ML and research, all part of the degree', 'angewandtes ML und Forschung, alles Teil des Studiums') } ] },
@@ -244,6 +247,13 @@ class App extends Component {
     };
     const openDoc = (id) => () => this.setState({ viewer: id, vpage: 0 });
     const item = (id, icon, label, sub) => ({ icon: icon, label: label, sub: sub, open: openDoc(id) });
+    const ASSETS = [
+      { icon: 'GH', label: L('Code on GitHub', 'Code auf GitHub'), sub: L('Training, evaluation and benchmark pipeline', 'Trainings-, Evaluations- und Benchmark-Pipeline'), url: 'https://github.com/abhinandansamal/odia-german-bidirectional-neural-machine-translation' },
+      { icon: 'HF', label: L('LoRA model', 'LoRA-Modell'), sub: L('NLLB-200 600M · LoRA fine-tuned · Hugging Face', 'NLLB-200 600M · LoRA-feinabgestimmt · Hugging Face'), url: 'https://huggingface.co/abhinandansamal/nllb-200-distilled-600M-LoRA-finetuned-odia-german-bidirectional' },
+      { icon: 'HF', label: L('Full fine-tuned model', 'Voll feinabgestimmtes Modell'), sub: L('NLLB-200 600M · full fine-tuning baseline · Hugging Face', 'NLLB-200 600M · Baseline mit vollem Fine-Tuning · Hugging Face'), url: 'https://huggingface.co/abhinandansamal/nllb-200-distilled-600M-full-finetuned-odia-german-bidirectional' },
+      { icon: 'HF', label: L('Live demos (Spaces)', 'Live-Demos (Spaces)'), sub: L('Try both translators in the browser', 'Beide Übersetzer im Browser testen'), url: 'https://huggingface.co/abhinandansamal/spaces' },
+      { icon: 'HF', label: L('Dataset', 'Datensatz'), sub: L('Odia–German parallel corpus · Hugging Face', 'Odia–Deutsch-Parallelkorpus · Hugging Face'), url: 'https://huggingface.co/datasets/abhinandansamal/odia-german-parallel-corpus-research' }
+    ];
     const PUBS = [
       { id: 'a', venue: 'Springer · AI4CHIEF 2026 · Paris', title: 'Enabling Digital Documentation of Odia, a Low-Resource Indo-Aryan Language, through Efficient Bidirectional Odia–German Machine Translation',
         status: L('Accepted · presented Apr 2026, Paris (Track 3: AI for Language Revitalization) · Springer proceedings pending', 'Angenommen · präsentiert Apr. 2026, Paris (Track 3: AI for Language Revitalization) · Springer-Tagungsband ausstehend'),
@@ -284,7 +294,7 @@ class App extends Component {
     } : { open: false };
     const pubs = PUBS.map((u) => {
       const open = !!st.open[u.id];
-      return Object.assign({}, u, { open: open, btn: open ? L('Hide proof ↑', 'Nachweise ausblenden ↑') : L('View proof ↓', 'Nachweise anzeigen ↓'), toggle: () => this.setState({ open: Object.assign({}, st.open, { [u.id]: !open }) }) });
+      return Object.assign({}, u, { assets: ASSETS, open: open, btn: open ? L('Hide proof ↑', 'Nachweise ausblenden ↑') : L('View proof ↓', 'Nachweise anzeigen ↓'), toggle: () => this.setState({ open: Object.assign({}, st.open, { [u.id]: !open }) }) });
     });
 
     const STACK = [
@@ -309,10 +319,15 @@ class App extends Component {
     ];
 
     return {
+      recs: [
+        { initials: 'SM', name: 'Subham Majumdar', role: L('Associate Director, LTIMindtree · former Senior Project Manager, IBM', 'Associate Director, LTIMindtree · ehem. Senior Project Manager, IBM'), rel: L('Managed me directly at IBM · Aug 2024', 'Mein direkter Vorgesetzter bei IBM · Aug. 2024'), quote: 'I was managing a 22+ members Offshore team where Abhinandan worked as the Lead of Kafka-Ksqldb team where his constructive approach towards the given tasks and accuracy of delivering the things in time was really commendable. He was also a quick learner, good communicator and team player.' },
+        { initials: 'AG', name: 'Aarthy Ganesh Kumar', role: L('Full Stack Developer, eBay', 'Full Stack Developer, eBay'), rel: L('Managed me directly at IBM · Aug 2024', 'Meine direkte Vorgesetzte bei IBM · Aug. 2024'), quote: 'His meticulous approach to tasks and projects ensured accuracy and high-quality results. He consistently demonstrated a growth mindset, eagerly seeking opportunities to expand his skills and knowledge. His approach to solving complex problems are indeed commendable. He was a great asset to the team.' },
+        { initials: 'NP', name: 'Nimisha P', role: L('Senior Data Engineer', 'Senior Data Engineer'), rel: L('Worked with me on the same team at IBM · Aug 2024', 'Kollegin im selben Team bei IBM · Aug. 2024'), quote: 'Abhinandan consistently demonstrated a deep understanding of Kafka, KSQL, and KStream, and his problem-solving abilities were truly impressive. He also extended his expertise by assisting the architect in providing reliable data flow designs.' }
+      ],
       t: t, langs: langs, nav: nav, stg: stg, vw: vw, bench: bench, lg: lg,
       openCv: () => this.setState({ viewer: 'cv', vpage: 0 }),
       openImprint: () => this.setState({ legal: 'imprint' }), openPrivacy: () => this.setState({ legal: 'privacy' }),
-      ty: { h1b: T('h1b', t.h1b), storyH2: T('storyH2', t.storyH2), tagline: T('tagline', t.tagline), bringH2: T('bringH2', t.bringH2), workH2: T('workH2', t.workH2), resH2: T('resH2', t.resH2), stackH2: T('stackH2', t.stackH2), certH2: T('certH2', t.certH2), contactH2: T('contactH2', t.contactH2), chTitle: T('chTitle', view.title), chBody: T('chBody', view.body), capProof: T('capProof', CAPS[st.cap].proof) },
+      ty: { h1b: T('h1b', t.h1b), storyH2: T('storyH2', t.storyH2), tagline: T('tagline', t.tagline), bringH2: T('bringH2', t.bringH2), workH2: T('workH2', t.workH2), resH2: T('resH2', t.resH2), stackH2: T('stackH2', t.stackH2), certH2: T('certH2', t.certH2), contactH2: T('contactH2', t.contactH2), recsH2: T('recsH2', t.recsH2), chTitle: T('chTitle', view.title), chBody: T('chBody', view.body), capProof: T('capProof', CAPS[st.cap].proof) },
       nums: (() => {
         const c = (st.count && st.count.all !== undefined) ? st.count.all : 1;
         const e = 1 - Math.pow(1 - c, 3);
@@ -347,15 +362,15 @@ App.prototype.render = function () {
 
 <header style="position: sticky; top: 0; z-index: 10; background: rgba(11,13,18,0.92); border-bottom: 1px solid #262B36">
 <div class="progress" style="position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: #F5B83D; transform-origin: 0 50%"></div>
-<nav style="max-width: 1200px; margin: 0 auto; padding: 14px 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px">
+<nav style="max-width: 1360px; margin: 0 auto; padding: 14px 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px">
 <a href="#top" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #E8EAEE">
 <span style="width: 36px; height: 36px; border-radius: 10px; background: #F5B83D; color: #0B0D12; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px">AS</span>
 <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 17px">Abhinandan Samal</span>
 </a>
-<div style="display: flex; flex-wrap: wrap; gap: 4px 6px; flex: 1 1 auto; font-size: 15px">
+<div style="display: flex; flex-wrap: wrap; gap: 4px 2px; flex: 1 1 auto; font-size: 14px">
 ${(v.nav || []).map((n, $index) => html`
-${n.active ? html`<a href=${n.href} onClick=${n.pick} aria-current="true" style="color: #F5B83D; text-decoration: none; padding: 9px 12px; border-radius: 8px; background: #2A2312; font-weight: 600; transition: all .25s ease">${n.label}</a>` : null}
-${n.inactive ? html`<a href=${n.href} onClick=${n.pick} style="color: #B8BEC8; text-decoration: none; padding: 9px 12px; border-radius: 8px; transition: all .25s ease">${n.label}</a>` : null}
+${n.active ? html`<a href=${n.href} onClick=${n.pick} aria-current="true" style="color: #F5B83D; text-decoration: none; padding: 8px 10px; border-radius: 8px; background: #2A2312; font-weight: 600; transition: all .25s ease">${n.label}</a>` : null}
+${n.inactive ? html`<a href=${n.href} onClick=${n.pick} style="color: #B8BEC8; text-decoration: none; padding: 8px 10px; border-radius: 8px; transition: all .25s ease">${n.label}</a>` : null}
 `)}
 </div>
 <div style="display: flex; gap: 10px; align-items: center">
@@ -513,39 +528,6 @@ ${(v.ch.table.rows || []).map((r, $index) => html`<div role="row" style="display
 </section>
 
 
-<section id="bring" class="reveal" style="max-width: 1200px; margin: 0 auto; padding: 96px 32px 40px">
-<div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px">
-<span style="font-size: 14px; font-weight: 600; color: #5CC8E8; letter-spacing: 0.06em">${v.t.bringEyebrow}</span>
-<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(30px, 7vw, 46px); letter-spacing: -0.02em"><span>${v.ty.bringH2.typed}</span>${v.ty.bringH2.typing ? html`<span class="caret" aria-hidden="true"></span>` : null}<span style="color: transparent">${v.ty.bringH2.rest}</span></h2>
-</div>
-<div style="display: flex; flex-wrap: wrap; gap: 20px">
-<div role="tablist" aria-label="Capabilities" style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 10px">
-${(v.caps || []).map((c, $index) => html`
-${c.active ? html`
-<button role="tab" aria-selected="true" onClick=${c.pick} style="text-align: left; padding: 20px 22px; border-radius: 14px; border: 1px solid #F5B83D; background: #2A2312; color: #E8EAEE; cursor: pointer; display: flex; gap: 14px; align-items: center"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; color: #F5B83D">${c.no}</span><span style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600">${c.h}</span></button>
-` : null}
-${c.inactive ? html`
-<button role="tab" aria-selected="false" onClick=${c.pick} style="text-align: left; padding: 20px 22px; border-radius: 14px; border: 1px solid #262B36; background: #141821; color: #B8BEC8; cursor: pointer; display: flex; gap: 14px; align-items: center"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; color: #9AA1AD">${c.no}</span><span style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600">${c.h}</span></button>
-` : null}
-`)}
-</div>
-<div class="swap" role="tabpanel" style="flex: 999 1 520px; min-width: 0; background: #141821; border: 1px solid #262B36; border-radius: 20px; padding: 36px; display: flex; flex-direction: column; gap: 18px">
-<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700">${v.cap.h}</h3>
-<p style="margin: 0; font-size: 17px; line-height: 1.65; color: #B8BEC8"><span>${v.ty.capProof.typed}</span>${v.ty.capProof.typing ? html`<span class="caret" aria-hidden="true"></span>` : null}<span style="color: transparent">${v.ty.capProof.rest}</span></p>
-<div style="display: flex; flex-direction: column; gap: 8px">
-<span style="font-size: 13px; font-weight: 700; color: #9AA1AD; letter-spacing: 0.06em">${v.t.where}</span>
-<span style="font-size: 16px; color: #E8EAEE">${v.cap.where}</span>
-</div>
-<div class=${v.stg.bring} style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto">
-${(v.cap.tools || []).map((x, $index) => html`
-<span style="padding: 7px 12px; border-radius: 8px; border: 1px solid #3A4150; font-size: 13px; color: #B8BEC8">${x}</span>
-`)}
-</div>
-</div>
-</div>
-</section>
-
-
 <section id="work" class="reveal" style="max-width: 1200px; margin: 0 auto; padding: 96px 32px 40px">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 28px">
 <div style="display: flex; flex-direction: column; gap: 12px">
@@ -670,6 +652,16 @@ ${(u.proof || []).map((f, $index) => html`
 </button>
 `)}
 </div>
+<span style="font-size: 13px; font-weight: 700; color: #9AA1AD; letter-spacing: 0.06em; margin-top: 4px">${v.t.codeModels}</span>
+<div class="swap" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 12px">
+${(u.assets || []).map((f, $index) => html`
+<a href=${f.url} target="_blank" rel="noopener" style="text-decoration: none; padding: 18px; border-radius: 12px; background: #10131A; border: 1px solid #262B36; color: #E8EAEE; display: flex; gap: 14px; align-items: center">
+<span style="flex: 0 0 auto; width: 40px; height: 40px; border-radius: 10px; background: #1D2330; color: #5CC8E8; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700" aria-hidden="true">${f.icon}</span>
+<span style="display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0"><strong style="font-size: 15px">${f.label}</strong><span style="color: #9AA1AD; font-size: 13px">${f.sub}</span></span>
+<span style="color: #5CC8E8; font-size: 13px; font-weight: 600">↗</span>
+</a>
+`)}
+</div>
 ` : null}
 </article>
 `)}
@@ -698,6 +690,39 @@ ${(s.items || []).map((x, $index) => html`<span style="padding: 10px 14px; borde
 </section>
 
 
+<section id="bring" class="reveal" style="max-width: 1200px; margin: 0 auto; padding: 96px 32px 40px">
+<div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px">
+<span style="font-size: 14px; font-weight: 600; color: #5CC8E8; letter-spacing: 0.06em">${v.t.bringEyebrow}</span>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(30px, 7vw, 46px); letter-spacing: -0.02em"><span>${v.ty.bringH2.typed}</span>${v.ty.bringH2.typing ? html`<span class="caret" aria-hidden="true"></span>` : null}<span style="color: transparent">${v.ty.bringH2.rest}</span></h2>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px">
+<div role="tablist" aria-label="Capabilities" style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 10px">
+${(v.caps || []).map((c, $index) => html`
+${c.active ? html`
+<button role="tab" aria-selected="true" onClick=${c.pick} style="text-align: left; padding: 20px 22px; border-radius: 14px; border: 1px solid #F5B83D; background: #2A2312; color: #E8EAEE; cursor: pointer; display: flex; gap: 14px; align-items: center"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; color: #F5B83D">${c.no}</span><span style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600">${c.h}</span></button>
+` : null}
+${c.inactive ? html`
+<button role="tab" aria-selected="false" onClick=${c.pick} style="text-align: left; padding: 20px 22px; border-radius: 14px; border: 1px solid #262B36; background: #141821; color: #B8BEC8; cursor: pointer; display: flex; gap: 14px; align-items: center"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; color: #9AA1AD">${c.no}</span><span style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600">${c.h}</span></button>
+` : null}
+`)}
+</div>
+<div class="swap" role="tabpanel" style="flex: 999 1 520px; min-width: 0; background: #141821; border: 1px solid #262B36; border-radius: 20px; padding: 36px; display: flex; flex-direction: column; gap: 18px">
+<h3 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700">${v.cap.h}</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; color: #B8BEC8"><span>${v.ty.capProof.typed}</span>${v.ty.capProof.typing ? html`<span class="caret" aria-hidden="true"></span>` : null}<span style="color: transparent">${v.ty.capProof.rest}</span></p>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 13px; font-weight: 700; color: #9AA1AD; letter-spacing: 0.06em">${v.t.where}</span>
+<span style="font-size: 16px; color: #E8EAEE">${v.cap.where}</span>
+</div>
+<div class=${v.stg.bring} style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto">
+${(v.cap.tools || []).map((x, $index) => html`
+<span style="padding: 7px 12px; border-radius: 8px; border: 1px solid #3A4150; font-size: 13px; color: #B8BEC8">${x}</span>
+`)}
+</div>
+</div>
+</div>
+</section>
+
+
 <section id="certs" class="reveal" style="max-width: 1200px; margin: 0 auto; padding: 72px 32px 40px">
 <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px">
 <span style="font-size: 14px; font-weight: 600; color: #5CC8E8; letter-spacing: 0.06em">${v.t.certEyebrow}</span>
@@ -714,6 +739,34 @@ ${(v.certs || []).map((k, $index) => html`
 </span>
 </a>
 `)}
+</div>
+</section>
+
+
+<section id="recs" class="reveal" style="max-width: 1200px; margin: 0 auto; padding: 72px 32px 40px">
+<div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px">
+<span style="font-size: 14px; font-weight: 600; color: #5CC8E8; letter-spacing: 0.06em">${v.t.recsEyebrow}</span>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(30px, 7vw, 44px); letter-spacing: -0.02em"><span>${v.ty.recsH2.typed}</span>${v.ty.recsH2.typing ? html`<span class="caret" aria-hidden="true"></span>` : null}<span style="color: transparent">${v.ty.recsH2.rest}</span></h2>
+</div>
+<div class=${v.stg.recs} style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 16px">
+${(v.recs || []).map((r, $index) => html`
+<figure style="margin: 0; background: #141821; border: 1px solid #262B36; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 18px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 48px; line-height: 0.6; color: #F5B83D; height: 22px" aria-hidden="true">“</span>
+<blockquote lang="en" style="margin: 0; font-size: 16px; line-height: 1.65; color: #E8EAEE">${r.quote}</blockquote>
+<figcaption style="margin-top: auto; display: flex; gap: 14px; align-items: center; padding-top: 14px; border-top: 1px solid #262B36">
+<span style="flex: 0 0 auto; width: 44px; height: 44px; border-radius: 50%; background: #2A2312; color: #F5B83D; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px" aria-hidden="true">${r.initials}</span>
+<span style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
+<strong style="font-size: 15px; color: #E8EAEE">${r.name}</strong>
+<span style="font-size: 13px; color: #9AA1AD; line-height: 1.45">${r.role}</span>
+<span style="font-size: 12px; color: #5CC8E8; font-weight: 600">${r.rel}</span>
+</span>
+</figcaption>
+</figure>
+`)}
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-top: 18px">
+<span style="font-size: 12px; color: #9AA1AD">${v.t.recsNote}</span>
+<a href="https://www.linkedin.com/in/abhinandan-samal/details/recommendations/" target="_blank" rel="noopener" style="padding: 11px 16px; border-radius: 10px; border: 1px solid #3A4150; color: #E8EAEE; text-decoration: none; font-size: 14px; font-weight: 600">${v.t.recsMore} ↗</a>
 </div>
 </section>
 
