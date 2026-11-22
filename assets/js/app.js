@@ -106,7 +106,7 @@ class App extends Component {
       locL: L('Based in Berlin ·', 'Wohnort Berlin ·'), locV: L('Open to Relocation, On-site, Hybrid or Remote', 'Umzugsbereit, vor Ort, hybrid oder remote'),
       langL: L('Languages:', 'Sprachen:'), langV: L('English C1 · German A1 → A2', 'Englisch C1 · Deutsch A1 → A2'),
       storyEyebrow: L('THE STORY', 'MEIN WEG'),
-      storyH2: L('From production engineering to AI engineering.', 'Vom Production Engineering zum AI Engineering.'),
+      storyH2: L('From data pipelines to production ML, peer-reviewed research and agentic AI.', 'Von Datenpipelines über produktives ML und begutachtete Forschung bis zu Agentic AI.'),
       prev: L('← Previous', '← Zurück'), next: L('Next chapter →', 'Nächstes Kapitel →'),
       cap1: L('Graduation day · M.Sc. Data Science, IU International University of Applied Sciences', 'Abschlussfeier · M.Sc. Data Science, IU International University of Applied Sciences'),
       cap2: L('Celebrating with the class of 2025 · Berlin', 'Feier mit dem Abschlussjahrgang 2025 · Berlin'),
