@@ -1,14 +1,5 @@
 import { html, render, Component } from './preact-htm.mjs';
 
-const gcEvent = (name) => { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: name, title: name, event: true }); } catch (e) {} };
-document.addEventListener('click', (ev) => {
-  const a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
-  if (!a) return;
-  const href = a.getAttribute('href') || '';
-  if (a.hasAttribute('download')) gcEvent('download: ' + href.split('/').pop());
-  else if (href.indexOf('mailto:') === 0) gcEvent('contact: email');
-  else if (/^https?:/.test(href) && href.indexOf(location.host) < 0) gcEvent('outbound: ' + href.replace(/^https?:\/\/(www\.)?/, '').slice(0, 90));
-}, true);
 class App extends Component {
   constructor(props) {
     super(props);
@@ -143,7 +134,7 @@ class App extends Component {
       contactH2: L('Building AI products or the data platforms behind them? Let’s talk.', 'Sie bauen KI-Produkte oder die Datenplattformen dahinter? Sprechen wir.'),
       contactP: L('Open to AI Engineer, ML Engineer, Data Engineer and Applied AI Research roles. Available immediately with unrestricted German work rights, and happy to walk you through any system live. I usually reply within 24 hours.', 'Offen für Rollen als AI Engineer, ML Engineer, Data Engineer und im Applied AI Research. Sofort verfügbar mit uneingeschränkter Arbeitserlaubnis in Deutschland – gern stelle ich jedes System live vor. Antwort in der Regel innerhalb von 24 Stunden.'),
       building: L('Currently building: Recall Radar · v1.0 late Nov 2026', 'Aktuell in Arbeit: Recall Radar · v1.0 Ende Nov. 2026'),
-      footer: L('© 2026 Abhinandan Samal · Berlin · no cookies · anonymous visitor statistics', '© 2026 Abhinandan Samal · Berlin · keine Cookies · anonyme Besucherstatistik'),
+      footer: L('© 2026 Abhinandan Samal · Berlin · no cookies, no trackers', '© 2026 Abhinandan Samal · Berlin · keine Cookies, kein Tracking'),
       privacy: L('Privacy policy', 'Datenschutz'),
       codeModels: L('CODE, MODELS & DATA', 'CODE, MODELLE & DATEN'),
       navRecs: L('Recommendations', 'Empfehlungen'),
@@ -245,7 +236,7 @@ class App extends Component {
     proj.embed = ytId ? 'https://www.youtube-nocookie.com/embed/' + ytId + '?autoplay=1&rel=0' : '';
     proj.playing = !!ytId && st.playing === proj.id;
     proj.showPlay = !!ytId && !proj.playing;
-    proj.play = () => { gcEvent('demo: ' + proj.id); this.setState({ playing: proj.id }); };
+    proj.play = () => this.setState({ playing: proj.id });
 
     const DOCS = {
       cv: { file: 'assets/files/Abhinandan_Samal_CV.pdf', title: L('CV · Abhinandan Samal', 'Lebenslauf · Abhinandan Samal'), sub: L('2 pages · current version', '2 Seiten · aktuelle Fassung'), unit: L('Page', 'Seite'), pages: ['assets/docs/cv/p01.jpg', 'assets/docs/cv/p02.jpg'] },
@@ -256,7 +247,7 @@ class App extends Component {
       icr: { file: 'assets/files/ICICoS_2026_Presenter_Certificate.pdf', title: L('Presenter certificate · ICICoS 2026', 'Referentenzertifikat · ICICoS 2026'), sub: L('Awarded to Abhinandan Samal · Semarang, 12–13 Aug 2026', 'Verliehen an Abhinandan Samal · Semarang, 12.–13. Aug. 2026'), unit: '', pages: ['assets/docs/icicos-presenter-certificate.jpg'] },
       ics: { file: 'assets/files/ICICoS_2026_Presentation_Samal.pdf', title: L('Presentation · ICICoS 2026, Semarang', 'Präsentation · ICICoS 2026, Semarang'), sub: L('Slides as presented, Aug 2026', 'Folien wie präsentiert, Aug. 2026'), unit: L('Slide', 'Folie'), pages: ['assets/docs/icicos-slides/s01.jpg', 'assets/docs/icicos-slides/s02.jpg', 'assets/docs/icicos-slides/s03.jpg', 'assets/docs/icicos-slides/s04.jpg', 'assets/docs/icicos-slides/s05.jpg', 'assets/docs/icicos-slides/s06.jpg', 'assets/docs/icicos-slides/s07.jpg', 'assets/docs/icicos-slides/s08.jpg', 'assets/docs/icicos-slides/s09.jpg', 'assets/docs/icicos-slides/s10.jpg', 'assets/docs/icicos-slides/s11.jpg'] }
     };
-    const openDoc = (id) => () => { gcEvent('view: ' + id); this.setState({ viewer: id, vpage: 0 }); };
+    const openDoc = (id) => () => this.setState({ viewer: id, vpage: 0 });
     const item = (id, icon, label, sub) => ({ icon: icon, label: label, sub: sub, open: openDoc(id) });
     const ASSETS = [
       { icon: 'GH', label: L('Code on GitHub', 'Code auf GitHub'), sub: L('Training, evaluation and benchmark pipeline', 'Trainings-, Evaluations- und Benchmark-Pipeline'), url: 'https://github.com/abhinandansamal/odia-german-bidirectional-neural-machine-translation' },
@@ -284,7 +275,7 @@ class App extends Component {
       privacy: { title: L('Privacy policy', 'Datenschutzerklärung'), sections: [
         { h: L('1. Controller', '1. Verantwortlicher'), p: 'Abhinandan Samal\n' + ADDR + '\n' + L('Email: abhinandan198@gmail.com', 'E-Mail: abhinandan198@gmail.com') },
         { h: L('2. Hosting and server logs', '2. Hosting und Server-Logfiles'), p: L('This website is hosted on GitHub Pages (GitHub, Inc.). When you visit, the host automatically processes technical data such as your IP address, date and time, and browser type to deliver the site and keep it secure. Legal basis: Art. 6(1)(f) GDPR. GitHub is certified under the EU–US Data Privacy Framework.', 'Diese Website wird über GitHub Pages (GitHub, Inc.) gehostet. Beim Aufruf verarbeitet der Hoster automatisch technische Daten wie IP-Adresse, Datum und Uhrzeit sowie Browsertyp, um die Seite auszuliefern und sicher zu betreiben. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO. GitHub ist unter dem EU-US Data Privacy Framework zertifiziert.') },
-        { h: L('3. No cookies · anonymous statistics', '3. Keine Cookies · anonyme Statistik'), p: L('This website sets no cookies. To see how often the site is visited, it uses GoatCounter (goatcounter.com), a privacy-friendly statistics service. GoatCounter records page views and clicks together with the referring website, browser, screen size and approximate country. It does not create user profiles, does not use cookies or unique identifiers, and does not store your IP address. Legal basis: Art. 6(1)(f) GDPR (legitimate interest in understanding how the site is used). Details: goatcounter.com/privacy. Fonts and documents are served from this website itself.', 'Diese Website setzt keine Cookies. Um zu sehen, wie oft die Seite besucht wird, nutzt sie GoatCounter (goatcounter.com), einen datenschutzfreundlichen Statistikdienst. GoatCounter erfasst Seitenaufrufe und Klicks zusammen mit verweisender Website, Browser, Bildschirmgröße und ungefährem Land. Es werden keine Nutzerprofile erstellt, keine Cookies oder eindeutigen Kennungen verwendet und keine IP-Adressen gespeichert. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse, die Nutzung der Website zu verstehen). Details: goatcounter.com/privacy. Schriften und Dokumente werden von dieser Website selbst ausgeliefert.') },
+        { h: L('3. No cookies, no tracking', '3. Keine Cookies, kein Tracking'), p: L('This website sets no cookies and uses no analytics or tracking tools. Fonts and documents are served from this website itself, not from third-party servers.', 'Diese Website setzt keine Cookies und nutzt keine Analyse- oder Tracking-Tools. Schriften und Dokumente werden von dieser Website selbst ausgeliefert, nicht von Servern Dritter.') },
         { h: L('4. Videos and external links', '4. Videos und externe Links'), p: L('Project demo videos are hosted on YouTube and only load after you click play, in privacy-enhanced mode. Links to GitHub, Hugging Face, LinkedIn and YouTube take you to third-party websites, whose own privacy policies apply.', 'Projekt-Demovideos liegen auf YouTube und werden erst nach Klick im erweiterten Datenschutzmodus geladen. Links zu GitHub, Hugging Face, LinkedIn und YouTube führen zu Websites Dritter, für die deren eigene Datenschutzerklärungen gelten.') },
         { h: L('5. Contact by email', '5. Kontakt per E-Mail'), p: L('If you email me, I use your details only to reply and delete them once they are no longer needed. Legal basis: Art. 6(1)(b) and (f) GDPR.', 'Wenn Sie mir eine E-Mail schreiben, nutze ich Ihre Angaben nur zur Beantwortung und lösche sie, sobald sie nicht mehr benötigt werden. Rechtsgrundlage: Art. 6 Abs. 1 lit. b und f DSGVO.') },
         { h: L('6. Your rights', '6. Ihre Rechte'), p: L('You have the right to access, rectification, erasure, restriction of processing, data portability and objection (Art. 15–21 GDPR). You may also complain to a supervisory authority, e.g. the Berlin Commissioner for Data Protection and Freedom of Information.', 'Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch (Art. 15–21 DSGVO). Zudem können Sie sich bei einer Aufsichtsbehörde beschweren, z. B. bei der Berliner Beauftragten für Datenschutz und Informationsfreiheit.') }
@@ -336,7 +327,7 @@ class App extends Component {
         { initials: 'NP', name: 'Nimisha P', role: L('Senior Data Engineer', 'Senior Data Engineer'), rel: L('Worked with me on the same team at IBM · Aug 2024', 'Kollegin im selben Team bei IBM · Aug. 2024'), quote: 'Abhinandan consistently demonstrated a deep understanding of Kafka, KSQL, and KStream, and his problem-solving abilities were truly impressive. He also extended his expertise by assisting the architect in providing reliable data flow designs.' }
       ],
       t: t, langs: langs, nav: nav, stg: stg, vw: vw, bench: bench, lg: lg,
-      openCv: () => { gcEvent('view: cv'); this.setState({ viewer: 'cv', vpage: 0 }); },
+      openCv: () => this.setState({ viewer: 'cv', vpage: 0 }),
       openImprint: () => this.setState({ legal: 'imprint' }), openPrivacy: () => this.setState({ legal: 'privacy' }),
       ty: { h1b: T('h1b', t.h1b), storyH2: T('storyH2', t.storyH2), tagline: T('tagline', t.tagline), bringH2: T('bringH2', t.bringH2), workH2: T('workH2', t.workH2), resH2: T('resH2', t.resH2), stackH2: T('stackH2', t.stackH2), certH2: T('certH2', t.certH2), contactH2: T('contactH2', t.contactH2), recsH2: T('recsH2', t.recsH2), chTitle: T('chTitle', view.title), chBody: T('chBody', view.body), capProof: T('capProof', CAPS[st.cap].proof) },
       nums: (() => {
