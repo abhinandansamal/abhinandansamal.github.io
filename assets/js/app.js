@@ -103,6 +103,7 @@ class App extends Component {
       btnSystems: L('View systems', 'Projekte ansehen'), btnEmail: L('Email me', 'E-Mail schreiben'),
       avail: L('Available now', 'Sofort verfügbar'),
       permitL: L('Work permit:', 'Arbeitserlaubnis:'), permitV: L('Job Seeker Visa Holder (§20 AufenthG) · Unrestricted Work Rights', 'Aufenthaltserlaubnis zur Arbeitsplatzsuche (§20 AufenthG) · Uneingeschränkt'),
+      natL: L('Nationality:', 'Staatsangehörigkeit:'), natV: L('Indian', 'Indisch'),
       locL: L('Based in Berlin ·', 'Wohnort Berlin ·'), locV: L('Open to Relocation, On-site, Hybrid or Remote', 'Umzugsbereit, vor Ort, hybrid oder remote'),
       langL: L('Languages:', 'Sprachen:'), langV: L('English C1 · German A1 → A2', 'Englisch C1 · Deutsch A1 → A2'),
       storyEyebrow: L('THE STORY', 'MEIN WEG'),
@@ -413,6 +414,7 @@ ${l.inactive ? html`<button onClick=${l.pick} aria-pressed="false" style="min-wi
 <div style="display: flex; flex-wrap: wrap; gap: 10px">
 <span style="padding: 10px 14px; border-radius: 8px; background: #13261C; color: #7EE2A8; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 10px"><span class="live-dot" aria-hidden="true"></span>${v.t.avail}</span>
 <span style="padding: 10px 14px; border-radius: 8px; background: #141821; border: 1px solid #262B36; color: #B8BEC8; font-size: 14px">${v.t.permitL} <strong style="color: #E8EAEE">${v.t.permitV}</strong></span>
+<span style="padding: 10px 14px; border-radius: 8px; background: #141821; border: 1px solid #262B36; color: #B8BEC8; font-size: 14px">${v.t.natL} <strong style="color: #E8EAEE">${v.t.natV}</strong></span>
 <span style="padding: 10px 14px; border-radius: 8px; background: #141821; border: 1px solid #262B36; color: #B8BEC8; font-size: 14px">${v.t.locL} <strong style="color: #E8EAEE">${v.t.locV}</strong></span>
 <span style="padding: 10px 14px; border-radius: 8px; background: #141821; border: 1px solid #262B36; color: #B8BEC8; font-size: 14px">${v.t.langL} <strong style="color: #E8EAEE">${v.t.langV}</strong></span>
 </div>
